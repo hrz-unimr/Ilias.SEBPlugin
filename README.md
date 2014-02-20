@@ -3,8 +3,8 @@ SEBPlugin
 
 ILIAS Plugin for Safe-Exam-Browser
 
-See also: http://www.safeexambrowser.org
-See also: https://github.com/eqsoft/seb
+* See also: http://www.safeexambrowser.org
+* See also: https://github.com/eqsoft/seb
 
 ## Installation ##
 * Download and extract the Customizing.zip into a temporary folder and explore the folder structure. 

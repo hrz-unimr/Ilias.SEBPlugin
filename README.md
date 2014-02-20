@@ -6,6 +6,9 @@ ILIAS Plugin for Safe-Exam-Browser
 * See also: http://www.safeexambrowser.org
 * See also: https://github.com/eqsoft/seb
 
+## Requirements ##
+* SEB ( >= 2.0 )
+
 ## Installation ##
 * Download and extract the Customizing.zip into a temporary folder and explore the folder structure. 
 * Sync the folder structure and files into your ILIAS webroot

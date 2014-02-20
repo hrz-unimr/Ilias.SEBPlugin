@@ -17,16 +17,22 @@ class ilSEBPlugin extends ilUserInterfaceHookPlugin
 	const ROLES_ALL = 1;
 	const BROWSER_KIOSK_ALL = 0;
 	const BROWSER_KIOSK_SEB = 1;
+	const CACHE = "SEB_CONFIG_CACHE";
 	
 	public static function _isAPCInstalled() {
 		//$ret = return 1;
 		return (function_exists("apc_store") && function_exists("apc_fetch"));
 	}
 	
+	public static function _flushAPC() {
+		if (ilSEBPlugin::_isAPCInstalled() && apc_exists(ilSEBPlugin::CACHE))  {
+			apc_delete(ilSEBPlugin::CACHE);
+		}
+	}
+	
 	function getPluginName() {
 		return "SEB";
 	}
-	
 }
 
 ?>

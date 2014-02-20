@@ -119,4 +119,30 @@ div.sebKioskContent {
 	padding : 2em;
 }
 
+div.sebForbiddenContent {
+	margin-top : 10%;
+	text-align : center;
+}
 
+div.sebForbiddenLogo {
+	display: block;
+	background-image : url(images/HeaderIcon.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	padding : 64px;
+}
+
+div.sebForbiddenHeader {
+	font-size: 120%;
+}
+
+div.sebForbiddenMessage {
+	font-size: 100%;
+	margin-top: 20pt;
+}
+
+
+div.sebForbiddenLogin {
+	font-size: 100%;
+	margin-top: 20pt;
+}

@@ -26,3 +26,6 @@ browser_all#:#All
 save_success#:#Save succesful
 save_failure#:#Save failed!
 nothing_changed#:#Nothing changed
+forbidden_header#:#Access denied!
+forbidden_message#:#You are not authorized to access the system with this browser.<br />Please contact your system administrator.
+forbidden_login#:#Login to ILIAS

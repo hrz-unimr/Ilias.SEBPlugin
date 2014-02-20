@@ -3,6 +3,7 @@
 /* Copyright (c) 1998-2010 ILIAS open source, Extended GPL, see docs/LICENSE */
 
 include_once("./Services/UIComponent/classes/class.ilUIHookPluginGUI.php");
+include_once("./Services/Init/classes/class.ilStartUpGUI.php");
 include_once("class.ilSEBPlugin.php");
 //include_once("./Services/JSON/classes/class.ilJsonUtil.php");
 
@@ -29,18 +30,19 @@ class ilSEBUIHookGUI extends ilUIHookPluginGUI {
 		global $ilDB;
 		$rec;
 		
-		if (ilSEBPlugin::_isAPCInstalled() && apc_exists("SEB_CONFIG_CACHE")) {
-			$rec = apc_fetch("SEB_CONFIG_CACHE");
+		/*
+		if (ilSEBPlugin::_isAPCInstalled() && apc_exists(ilSEBPlugin::CACHE)) {
+			$rec = apc_fetch(ilSEBPlugin::CACHE);
 		}
-		else {
+		else {*/
 			$q = "SELECT config_json FROM ui_uihk_seb_conf";
 			$ret = $ilDB->query($q);
 			$rec = $ilDB->fetchAssoc($ret);
 			$rec = json_decode($rec['config_json'],true); // as assoc
-		}
+		//}
 		
 		if ($rec["url_salt"]) {
-			$url = strtolower($this->getFullUrl());
+			$url = $this->getFullUrl();
 			$rec["seb_key"] = hash('sha256',$url . $rec["seb_key"]);
 		}			
 		$server_req_header = $_SERVER[$rec["req_header"]];
@@ -70,20 +72,25 @@ class ilSEBUIHookGUI extends ilUIHookPluginGUI {
 	}
 	 
 	function exitIlias() {
-		global $ilAuth;
+		global $ilAuth;	
+		$pl = $this->getPluginObject();	
 		ilSession::setClosingContext(ilSession::SESSION_CLOSE_LOGIN);
 		$ilAuth->logout();
 		session_unset();
 		session_destroy();
-		$script = "login.php?target=".$_GET["target"]."&client_id=".$_COOKIE["ilClientId"];
-		ilUtil::redirect($script);				
-	}
-	
-	function setSebGUI () {
-		global $styleDefinition;
-		self::$_modifyGUI = 1;
-		$styleDefinition->setCurrentSkin("seb");
-		$styleDefinition->setCurrentStyle("seb");
+		$script = "login.php?target=".$_GET["target"]."&client_id=".$_COOKIE["ilClientId"];	
+		$headerTxt = $pl->txt("forbidden_header");
+		$msgTxt = $pl->txt("forbidden_message");
+		$loginTxt = $pl->txt("forbidden_login");
+		$login = "<a href=\"" . $script . "\">" . $loginTxt . "</a>";
+		$msg = file_get_contents("./Customizing/global/skin/seb/tpl.seb_forbidden.html");
+		$msg = str_replace("{TXT_HEADER}", $headerTxt, $msg);
+		$msg = str_replace("{TXT_MESSAGE}", $msgTxt, $msg);
+		$msg = str_replace("{LOGIN}", $login, $msg);
+		
+		header('HTTP/1.1 403 Forbidden');
+		echo $msg;
+		exit;			
 	}
 	
 	function setUserGUI () {
@@ -92,6 +99,14 @@ class ilSEBUIHookGUI extends ilUIHookPluginGUI {
 		$styleDefinition->setCurrentSkin($ilUser->getPref("skin"));
 		$styleDefinition->setCurrentStyle($ilUser->getPref("style"));
 	}
+	
+	function setSebGUI () {
+		global $styleDefinition;
+		self::$_modifyGUI = 1;
+		$styleDefinition->setCurrentSkin("seb");
+		$styleDefinition->setCurrentStyle("seb");
+	}
+
 	/**
 	 * Modify HTML output of GUI elements. Modifications modes are:
 	 * - ilUIHookPluginGUI::KEEP (No modification)
@@ -111,7 +126,6 @@ class ilSEBUIHookGUI extends ilUIHookPluginGUI {
 		if (!self::$_modifyGUI ) {
 			return array("mode" => ilUIHookPluginGUI::KEEP, "html" => "");
 		}			
-		
 		if ($a_comp == "Services/MainMenu" && $a_part == "main_menu_list_entries") {		
 			$pl = $this->getPluginObject();
 			$tpl->addJavaScript($pl->getDirectory() . "/ressources/seb.js");
@@ -133,7 +147,6 @@ class ilSEBUIHookGUI extends ilUIHookPluginGUI {
 		if ($a_comp == "Services/PersonalDesktop" && $a_part == "left_column") {			
 			return array("mode" => ilUIHookPluginGUI::REPLACE, "html" => "");
 		}
-		 
 		return array("mode" => ilUIHookPluginGUI::KEEP, "html" => "");
 	}
 	
@@ -173,6 +186,7 @@ class ilSEBUIHookGUI extends ilUIHookPluginGUI {
 			
 			if ($deny_user && !$allow_browser) {
 				$this->exitIlias();
+				//$this->setExitGUI();
 				return;
 			}
 				

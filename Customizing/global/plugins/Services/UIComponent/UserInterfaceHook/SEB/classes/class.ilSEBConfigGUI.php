@@ -61,8 +61,6 @@ class ilSEBConfigGUI extends ilPluginConfigGUI {
 		$browser_kiosk = $rec['browser_kiosk'];
 		$roles = array(0=>$pl->txt("role_none"),1=>$pl->txt("role_all_except_admin"));
 		
-		
-	
 		include_once("Services/Form/classes/class.ilPropertyFormGUI.php");
 		$form = new ilPropertyFormGUI();
 		
@@ -177,18 +175,8 @@ class ilSEBConfigGUI extends ilPluginConfigGUI {
 			
 			$ret = $ilDB->manipulateF($q,$types,$data);
 			//ilUtil::sendFailure($lng->txt("save_failure") . ":" . $ret, true);
-			
-			if ($ret < 0) {
-				//ilUtil::sendFailure($lng->txt("save_failure"), true);
-				ilUtil::sendFailure($pl->txt("save_failure"), true);
-			} 
-			else if ($ret == 0) {
-				ilUtil::sendInfo($pl->txt("nothing_changed"), true);
-			}
-			else 	{	
-				// store apc
-				if (ilSEBPlugin::_isAPCInstalled()) {										
-					$SEB_CONFIG_CACHE = array(
+			/*
+			$CACHE = array(
 						"req_header" => $req_header,
 						"seb_key" => $seb_key,
 						"url_salt" => (int)$url_salt,
@@ -196,10 +184,28 @@ class ilSEBConfigGUI extends ilPluginConfigGUI {
 						"browser_access" => (int)$browser_access,
 						"role_kiosk" => (int)$role_kiosk,
 						"browser_kiosk" => (int)$browser_kiosk
-					);
-					apc_store("SEB_CONFIG_CACHE",$SEB_CONFIG_CACHE);				  
+			);
+			*/
+			if ($ret < 0) {
+				//ilUtil::sendFailure($lng->txt("save_failure"), true);
+				ilUtil::sendFailure($pl->txt("save_failure"), true);
+			} 
+			else if ($ret == 0) {
+				// refresh apc
+				/*
+				if (ilSEBPlugin::_isAPCInstalled()) {																				
+					apc_store(ilSEBPlugin::CACHE,$CACHE);
+				}*/
+				ilUtil::sendInfo($pl->txt("nothing_changed") . $str, true);
+			}
+			else {	
+				// store apc								
+				/*
+				if (ilSEBPlugin::_isAPCInstalled()) {																				
+					apc_store(ilSEBPlugin::CACHE,$CACHE); 										
 				}
-				ilUtil::sendSuccess($pl->txt("save_success"), true);
+				*/ 	
+				ilUtil::sendSuccess($pl->txt("save_success") . $str, true);							
 			}
 			$ilCtrl->redirect($this, "configure");
 		}

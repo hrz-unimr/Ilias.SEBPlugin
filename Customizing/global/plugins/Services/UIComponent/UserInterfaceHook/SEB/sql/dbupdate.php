@@ -1,7 +1,13 @@
 <#1>
 <?php
-//include_once("./Services/JSON/classes/class.ilJsonUtil.php");
 
+/*
+include_once("../classes/class.ilSEBPlugin.php");
+
+if (ilSEBPlugin::_isAPCInstalled()) {
+	ilSEBPlugin::_flushAPC();
+}
+*/
 $data = array(
 	'req_header' => 'HTTP_X_SAFEEXAMBROWSER_REQUESTHASH',
 	'seb_key' => 0,

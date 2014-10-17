@@ -67,7 +67,14 @@ class ilSEBUIHookGUI extends ilUIHookPluginGUI {
 	function getSebObject() { // obsolet?
 		global $ilUser;
 		$pl = $this->getPluginObject();
-		$ret = "{}"; // for further use
+		$seb_user = array(
+					"login" => $ilUser->getLogin(),
+					"firstname" => $ilUser->getFirstname(),
+					"lastname" => $ilUser->getLastname(),
+					"matriculation" => $ilUser->getMatriculation()
+				);
+		$seb_object = array("user" => $seb_user);
+		$ret = json_encode($seb_object); 
 		return $ret;
 	}
 	 
@@ -125,13 +132,17 @@ class ilSEBUIHookGUI extends ilUIHookPluginGUI {
 		
 		if (!self::$_modifyGUI ) {
 			return array("mode" => ilUIHookPluginGUI::KEEP, "html" => "");
-		}			
+		}
+		
+		// JavaScript Injection of seb_object
 		if ($a_comp == "Services/MainMenu" && $a_part == "main_menu_list_entries") {		
 			$pl = $this->getPluginObject();
 			$tpl->addJavaScript($pl->getDirectory() . "/ressources/seb.js");
 			$seb_object = $this->getSebObject(); 
 			return array("mode" => ilUIHookPluginGUI::REPLACE, "html" => "<script type=\"text/javascript\">var seb_object = " . $seb_object . ";</script>");
 		}
+		
+		
 		if ($a_comp == "Services/MainMenu" && $a_part == "main_menu_search") {		
 			return array("mode" => ilUIHookPluginGUI::REPLACE, "html" => "");			
 		}
@@ -147,6 +158,7 @@ class ilSEBUIHookGUI extends ilUIHookPluginGUI {
 		if ($a_comp == "Services/PersonalDesktop" && $a_part == "left_column") {			
 			return array("mode" => ilUIHookPluginGUI::REPLACE, "html" => "");
 		}
+		 
 		return array("mode" => ilUIHookPluginGUI::KEEP, "html" => "");
 	}
 	
@@ -162,12 +174,13 @@ class ilSEBUIHookGUI extends ilUIHookPluginGUI {
 		
 		if ($a_comp == "Services/Init" && $a_part == "init_style") {			
 			$req = $this->detectSeb();
+			
 			// don't modify anything after an initial installation with an empty key
 			if ($req['seb_key'] == '') {
 				$this->setUserGUI();
 				return;
 			}
-			//print_r($req);
+			
 			$usr_id = $ilUser->getId();
 			$is_admin = $rbacreview->isAssigned($usr_id,2);
 			$is_logged_in = ($usr_id && $usr_id != ANONYMOUS_USER_ID);
@@ -196,7 +209,8 @@ class ilSEBUIHookGUI extends ilUIHookPluginGUI {
 			$browser_kiosk = $req['browser_kiosk'];
 			$kiosk_user = (($role_kiosk == 1 || $rbacreview->isAssigned($usr_id,$role_kiosk)) && !$is_admin);
 			
-			if ($is_logged_in) {				
+			if ($is_logged_in) {	
+							
 				$switchToSebGUI = false;
 				if ($kiosk_user) {
 					switch ($browser_kiosk) {

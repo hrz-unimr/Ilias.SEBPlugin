@@ -1,148 +1,89 @@
 @import url("../../../../templates/default/delos.css") screen;
 
-/*  overrides existing delos classes */
-
-div.ilStartupFrame {
-	margin-top: 0px;
-	background-image: none;
-	background-color: #ffffff;
-	position: relative;
-	top: 30px; 
+#ilTopBar {
+	display:none;
 }
 
-div.ilMainHeader {
-	background-image: none;
-	background-color: #ffffff;
-	height: 53px;
-	box-shadow: inset 0 -4px 1px -2px #18228F;
+.ilMainHeader.ilTopFixed {
+	top: 0px;
+	border-bottom: 1px solid;
 }
 
-div.ilMainMenuSection {
-	background-color: #ffffff;
+.ilMainHeader > header > .row > a.navbar-brand {
+	height: 55px;
+	padding: 3px 10px 0;
 }
 
-div.ilInfoScreenSec {
+div.ilMainMenu {
 	display: none;
 }
 
-#infoscreen_section_1 {
-	display: block;
+.navbar-brand {
+	float: left;
+	padding: 0px 0px;
+	font-size: 18px;
+	line-height: 0px;
+	height: 50px;
+}
+  
+header * img {
+	width:0;
+	height:0;
+	padding-left: 0px;
+	padding-right: 52px;
+	padding-top: 0px;
+	padding-bottom: 50px;
+	background-image: url(images/HeaderIcon.png);
+	background-repeat: no-repeat; 
 }
 
-td.il_InfoScreenPropertyValue > a {
+p.ilStartupSection {
+	display:none;
+}
+
+form[name="languageselection"] {
+	display:none;
+}
+
+footer {
+	display:none;
+}
+
+/* block */
+div.ilBlockHeader {
 	display: none;
 }
 
-div.ilToolbar {
-	background-color: #ffffff;
-}
-
-#fixed_content {
-	background-color: #F9F9F9;
-	box-shadow: none;
-	/*box-shadow: inset 0px 2px 2px #18228F;*/
-	right: 0;
-	bottom: 0;
-	left: 0;
-	position: fixed;
-	top: 55px;
-	overflow: auto;
-}
-
-#il_status_box {
+.ilContainerBlockHeader {
 	display: none;
 }
 
-.kiosk {}
-
-#kioskOptions {	
-	background-color: #ffffff;
-	height: 53px;
-	box-shadow: inset 0 -4px 1px -2px #18228F;
+.il_Block button {
+	display: none;
 }
 
-#kioskTestTitle {
-	position: fixed;
-	top: 15px;
-	left: 30px;
-	overflow: auto;
+#ilTab {
+	display: none;
 }
 
-#kioskParticipant {
-	position: fixed;
-	top: 15px;
-	right: 30px;
-	overflow: auto;
+.ilContentFixed button {
+	display: none;
 }
 
-#tst_output {
-	background-color: #F9F9F9;	
-	right: 0;
-	bottom: 0;
-	left: 0;
-	position: fixed;
-	top: 55px;
-	overflow: auto;
+form[name="formInfoScreen"] {
+	visibility: hidden;
 }
 
-#timeleft {
+/* tree */
+.ilTreeView {
+	display: none;
+}
+
+/* seb */
+.sebObject {
 	float: right;
-	font-size: 2em;
-}
-
-/* ToDo hide in template */
-div.il_Footer {
-	display: none;
-}
-
-div.ilPermaLink {
-	display: none;
-}
-
-a.ilTreeView { 
-	display: none;
-}
-
-/* custom seb style */
-span.sebFullname {
-	font-weight: bold;
-}
-
-div.sebKioskHeader {
-	padding-top : 1em;
-	padding-bottom : 1em;
-	padding-left : 2em;
-	padding-right : 2em;
-}
-
-div.sebKioskContent {
-	padding : 2em;
-}
-
-div.sebForbiddenContent {
-	margin-top : 10%;
-	text-align : center;
-}
-
-div.sebForbiddenLogo {
-	display: block;
-	background-image : url(images/HeaderIcon.png);
-	background-repeat: no-repeat;
-	background-position: center;
-	padding : 64px;
-}
-
-div.sebForbiddenHeader {
 	font-size: 120%;
-}
-
-div.sebForbiddenMessage {
-	font-size: 100%;
-	margin-top: 20pt;
-}
-
-
-div.sebForbiddenLogin {
-	font-size: 100%;
-	margin-top: 20pt;
+	font-weight: bold;
+	padding-top: 15px;
+	padding-right: 15px;
 }

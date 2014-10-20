@@ -134,14 +134,24 @@ class ilSEBUIHookGUI extends ilUIHookPluginGUI {
 			return array("mode" => ilUIHookPluginGUI::KEEP, "html" => "");
 		}
 		
-		// JavaScript Injection of seb_object
-		if ($a_comp == "Services/MainMenu" && $a_part == "main_menu_list_entries") {		
+		// JavaScript Injection of seb_object on TA kioskmode
+		
+		if ($a_part == "template_load" && $a_par["tpl_id"] == "Modules/Test/tpl.il_as_tst_kiosk_head.html") {
+		//if ($a_comp == "Services/MainMenu" && $a_part == "main_menu_list_entries") {			
+			$pl = $this->getPluginObject();
+			$tpl->addJavaScript($pl->getDirectory() . "/ressources/seb.js");
+			$seb_object = $this->getSebObject(); 
+			return array("mode" => ilUIHookPluginGUI::PREPEND, "html" => "<script type=\"text/javascript\">var seb_object = " . $seb_object . ";</script>");
+		}
+		
+		// JavaScript Injection of seb_object on PD kioskmode
+		
+		if ($a_comp == "Services/MainMenu" && $a_part == "main_menu_list_entries") {			
 			$pl = $this->getPluginObject();
 			$tpl->addJavaScript($pl->getDirectory() . "/ressources/seb.js");
 			$seb_object = $this->getSebObject(); 
 			return array("mode" => ilUIHookPluginGUI::REPLACE, "html" => "<script type=\"text/javascript\">var seb_object = " . $seb_object . ";</script>");
 		}
-		
 		
 		if ($a_comp == "Services/MainMenu" && $a_part == "main_menu_search") {		
 			return array("mode" => ilUIHookPluginGUI::REPLACE, "html" => "");			
@@ -171,7 +181,6 @@ class ilSEBUIHookGUI extends ilUIHookPluginGUI {
 	 */
 	function modifyGUI($a_comp, $a_part, $a_par = array()) {
 		global $ilUser, $rbacreview, $ilAuth;
-		
 		if ($a_comp == "Services/Init" && $a_part == "init_style") {			
 			$req = $this->detectSeb();
 			

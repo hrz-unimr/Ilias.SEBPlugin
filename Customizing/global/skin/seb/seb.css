@@ -49,6 +49,11 @@ footer {
 	display:none;
 }
 
+/* PD */
+#ilPDIntro {
+	display:none;
+}
+
 /* block */
 div.ilBlockHeader {
 	display: none;

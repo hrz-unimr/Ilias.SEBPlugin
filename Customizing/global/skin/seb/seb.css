@@ -1,61 +1,58 @@
 @import url("../../../../templates/default/delos.css") screen;
 
+body {
+	background-color: #FFF;
+}
+
+body.std {
+	background-color: #FFF;
+}
+
+
+/* hide TopBar */
 #ilTopBar {
 	display:none;
 }
 
-.ilMainHeader.ilTopFixed {
-	top: 0px;
-	border-bottom: 1px solid;
-	/*box-shadow: inset 0 -4px 1px -2px #18228F;*/
-}
-
-.ilMainHeader > header > .row > a.navbar-brand {
-	height: 55px;
-	padding: 3px 10px 0;
-}
-
+/* hide MainMenu */
 div.ilMainMenu {
 	display: none;
 }
 
-.navbar-brand {
-	float: left;
-	padding: 0px 0px;
-	font-size: 18px;
-	line-height: 0px;
-	height: 50px;
-}
-  
-header * img {
-	width:0;
-	height:0;
-	padding-left: 0px;
-	padding-right: 52px;
-	padding-top: 0px;
-	padding-bottom: 50px;
-	background-image: url(images/HeaderIcon.png);
-	background-repeat: no-repeat; 
-}
-
+/* hide StartupSection */
 p.ilStartupSection {
 	display:none;
 }
 
+/* hide languageselection  */
 form[name="languageselection"] {
 	display:none;
 }
 
+/* hide Footer */
 footer {
 	display:none;
 }
 
-/* PD */
+
+div#minheight {
+	display:none;
+}
+
+/* hide TreeView */
+.ilTreeView {
+	display: none;
+}
+
+/* hide Block buttons */
+.il_Block button {
+	display: none;
+}
+
 #ilPDIntro {
 	display:none;
 }
 
-/* block */
 div.ilBlockHeader {
 	display: none;
 }
@@ -64,9 +61,6 @@ div.ilBlockHeader {
 	display: none;
 }
 
-.il_Block button {
-	display: none;
-}
 
 #ilTab {
 	display: none;
@@ -76,45 +70,32 @@ div.ilBlockHeader {
 	display: none;
 }
 
-/*
-form[name="formInfoScreen"] {
-	visibility: hidden;
+form[name="formInfoScreen"] * {
+	background-color: #FFF;
 }
-
-
-.ilInfoScreenSec {
-	visibility: hidden;
-}
-*/
 
 .ilInfoScreenSec .il_InfoScreenPropertyValue a[href="#"] {
 	display: none;
 }
 
-/* tree */
-.ilTreeView {
-	display: none;
+.ilMainHeader.ilTopFixed {
+	top: 0px;
 }
 
-/* seb */
-.sebObject {
-	float: right;
-	font-size: 120%;
-	font-weight: bold;
-	padding-top: 15px;
-	padding-right: 15px;
+div.ilStartupSection p,  div.ilStartupSection p a {
+	font-size: 120% !important;
 }
 
-.kiosk {}
-
-#kioskOptions {
+/* using a fixed MainHeader and in kioskmode a kioskOption header */
+div#kioskOptions, div.ilMainHeader, div.ilMainheader.ilTopFixed {
 	position: fixed;
 	left: 0px;
 	top: 0px;
-	height: 55px;
+	height: 52px;
+	width: 100%;
 	padding-left: 30px;
 	padding-right: 30px;
-	padding-top: 15px;
+	padding-top: 0px;
 	border-top: 0px;
 	border-bottom: 1px solid #000;
 	font-weight: bold;
@@ -122,24 +103,146 @@ form[name="formInfoScreen"] {
 	background-color: #FFF;
 }
 
+header.container {
+	width: 100%;
+}
+
+header.container, header.container div.row,  header.container div.row a.navbar-brand {
+	height: 52px;
+	padding: 0;
+	margin-right:0;
+	margin-left:0;
+}
+
+#ilAll {
+	min-height: 0px !important;
+	background-color: #FFF;
+}
+
+div#il_startup_logo.row {
+	height: 52px;
+	padding: 0;
+	margin-right:0;
+	margin-left:0;
+}
+
+div#il_startup_logo img,  a.navbar-brand img {
+	width:0;
+	height:0;
+	padding-left: 0px;
+	padding-right: 52px;
+	padding-top: 0px;
+	padding-bottom: 50px;
+	background-image: url(images/HeaderIcon.png);
+	background-repeat: no-repeat;
+	margin: 0px;
+}
+
+/* Login Section */
+
+div#mainspacekeeper.container {
+	margin-top: 0px;
+	padding-top: 70px;
+}
+
+/* sebObject */
+.sebObject {
+	float: right;
+	padding-top: 15px;
+	padding-right: 15px;
+}
+
+/* kiosk */
+.kiosk {
+	background-color: #FFF;
+}
+
+.kioskWithCharSelector {
+	background-color: #FFF;
+}
+
+td.submit {
+	background-color: #FFF;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+
+.btn-default {
+	background-color: #EEE !important;
+	border-color: #444; !important;
+	color: #444 !important;
+	border-radius: 5px !important;
+}
+
+.btn-default:hover {
+	background-color: #DDD !important;
+	border-color: #444; !important;
+}
+
 #kioskExamID {
 	float: left;
 	width: 33%;
 	text-align: left;
+	padding-top: 10px;
 }
 
 #kioskTestTitle {
 	width: 33%;
 	text-align: center;
+	padding-top: 10px;
 }
 
 #kioskParticipant {
 	float: right;
 	width: 33%;
 	text-align: right;
+	padding-top: 10px;
 }
 
+/* test */
 form[name="listofquestions"], #tst_output {
 	position: static;
 	margin-top: 70px;
 }
+
+
+div.ilTstQuestionSummaryBlock_WorkingTime, div.ilTstWorkingFormBlock_WorkingTime {
+	width: 100%;
+	position: fixed;
+	margin-left: 0px;
+	padding-left: 30px;
+	top: 52px;
+	left: 0px;
+	background-color: #FFF;
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+span.ilTstWorkingFormInfo_ProcessTimeLeft {
+	font-size: 100%;
+	font-weight: normal;
+	text-align: left;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	display: block;
+}
+
+body.kioskWithCharSelector #ilCharSelectorPanel {
+	top: 85px;
+}
+
+input[type="image"] {
+	padding-right: 10px;
+}
+
+div.ilc_question_Standard {
+    margin: 20px 0px;
+    padding: 10px 100px 60px 40px;
+    background-color: #FFF !important;
+    border-width: 0px !important;
+    border-color: #BCD;
+    border-style: solid;
+    background-image: url('') !important;
+}
+

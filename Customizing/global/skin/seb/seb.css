@@ -103,11 +103,11 @@ div#kioskOptions, div.ilMainHeader, div.ilMainheader.ilTopFixed {
 	background-color: #FFF;
 }
 
-header.container {
+header.container, header.container-fluid {
 	width: 100%;
 }
 
-header.container, header.container div.row,  header.container div.row a.navbar-brand {
+header.container, header.container-fluid, header.container-fluid div.row, header.container div.row,  header.container-fluid div.row a.navbar-brand, header.container div.row a.navbar-brand {
 	height: 52px;
 	padding: 0;
 	margin-right:0;

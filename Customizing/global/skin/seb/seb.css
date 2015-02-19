@@ -110,8 +110,7 @@ header.container, header.container-fluid {
 header.container, header.container-fluid, header.container-fluid div.row, header.container div.row,  header.container-fluid div.row a.navbar-brand, header.container div.row a.navbar-brand {
 	height: 52px;
 	padding: 0;
-	margin-right:0;
-	margin-left:0;
+	margin:0px;
 }
 
 #ilAll {
@@ -167,7 +166,7 @@ td.submit {
 	padding-bottom: 15px;
 }
 
-
+/*
 .btn-default {
 	background-color: #EEE !important;
 	border-color: #444; !important;
@@ -179,6 +178,7 @@ td.submit {
 	background-color: #DDD !important;
 	border-color: #444; !important;
 }
+*/
 
 #kioskExamID {
 	float: left;
@@ -228,12 +228,18 @@ span.ilTstWorkingFormInfo_ProcessTimeLeft {
 	display: block;
 }
 
-body.kioskWithCharSelector #ilCharSelectorPanel {
+body.kioskWithCharSelector #ilCharSelectorPanel, body.kiosk #ilCharSelectorPanel {
 	top: 85px;
 }
 
+/*
 input[type="image"] {
 	padding-right: 10px;
+}
+*/
+
+input.ilTstMarkQuestionButton {
+	margin-left: 10px;
 }
 
 div.ilc_question_Standard {

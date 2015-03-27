@@ -41,10 +41,19 @@ class ilSEBUIHookGUI extends ilUIHookPluginGUI {
 			$rec = json_decode($rec['config_json'],true); // as assoc
 		//}
 		
+		$seb_keys = split(",",$rec["seb_key"]);
+		$rec["seb_keys"] = array();
+		$url = $this->getFullUrl();
 		if ($rec["url_salt"]) {
-			$url = $this->getFullUrl();
-			$rec["seb_key"] = hash('sha256',$url . $rec["seb_key"]);
-		}			
+			foreach ($seb_keys as $seb_key) {
+				array_push($rec["seb_keys"],hash('sha256',$url . trim($seb_key)));
+			}
+		}
+		else {
+			foreach ($seb_keys as $seb_key) {
+				array_push($rec["seb_keys"],trim($seb_key));
+			}
+		}
 		$server_req_header = $_SERVER[$rec["req_header"]];
 		
 		// ILIAS want to detect a valid SEB with a custom req_header and seb_key
@@ -53,13 +62,19 @@ class ilSEBUIHookGUI extends ilUIHookPluginGUI {
 			$rec["request"] = ilSebPlugin::NOT_A_SEB_REQUEST; // not a seb request
 			return $rec;
 		}
+		$is_seb_key = false;
 		// if the value of the req_header is not the the stored or hashed seb key: // not a seb request
-		if ($server_req_header != $rec["seb_key"]) {
-			$rec["request"] = ilSebPlugin::NOT_A_SEB_REQUEST; // not a seb request
+		foreach ($rec["seb_keys"] as $seb_key) {
+			if ($server_req_header == $seb_key) {
+				$is_seb_key = true;
+			}
+		}
+		if ($is_seb_key) {
+			$rec["request"] = ilSebPlugin::SEB_REQUEST; // seb request
 			return $rec;
 		}
 		else {
-			$rec["request"] = ilSebPlugin::SEB_REQUEST; // seb request
+			$rec["request"] = ilSebPlugin::NOT_A_SEB_REQUEST; // not a seb request
 			return $rec;
 		}
 	}

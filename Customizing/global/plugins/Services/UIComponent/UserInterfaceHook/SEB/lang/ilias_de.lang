@@ -6,8 +6,8 @@
 config#:#Configuration
 req_header#:#Request Header
 req_header_info#:#Der Name des Request-Header Feldes. PHP stellt dem Feldnamen automatisch den Prefix "HTTP_" voran, tauscht Bindestriche "-" mit Unterstrichen "_" aus und setzt den gesamten Text in Großbuchstaben. <br />Der ursprüngliche Feldname in der SEB Konfigurationsdatei heißt "X-SafeExamBrowser-RequestHash".
-seb_key#:#SEB Key
-seb_key_info#:#Der Schlüssel für die SEB Erkennung als Wert des o.g. Request-Header Feldes. <br />WARNUNG! Sobald Sie einen Schlüssel eingeben und abspeichern, werden in der Standardeinstellung alle Nutzer außer Admins abgewiesen, wenn diese ohne einen abgesicherten Browser auf diese Plattform zugreifen! 
+seb_key#:#SEB Keys
+seb_key_info#:#Die komma separierten Schlüssel für die SEB Erkennung als Wert des o.g. Request-Header Feldes. <br />WARNUNG! Sobald Sie einen oder mehrere Schlüssel eingeben und abspeichern, werden in der Standardeinstellung alle Nutzer außer Admins abgewiesen, wenn diese ohne einen abgesicherten Browser auf diese Plattform zugreifen! 
 url_salt#:#URL Salt (experimentell)
 url_salt_info#:#Wenn "URL Salt" ausgewählt ist, wird bei jeder Anfrage sowohl der SEB Schlüssel als auch die URL angehängt und per sha1-256 verschlüsselt übertragen. Bitte fragen Sie Ihren Systemadministrator für weitere Informationen.
 role_deny#:#Zugriff für Rolle verbieten

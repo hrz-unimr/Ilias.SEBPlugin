@@ -238,7 +238,8 @@ class ilSEBUIHookGUI extends ilUIHookPluginGUI {
 				if ($role_kiosk) {
 					switch ($browser_kiosk) {
 						case ilSebPlugin::BROWSER_KIOSK_ALL :
-							$switchToSebGUI = true;
+							// no role deny and all BROWSER_KIOSK_ALL seems to be a demo mode, don't change login page
+							$switchToSebGUI = ($role_deny != ilSebPlugin::ROLES_NONE);
 							break;
 						case ilSebPlugin::BROWSER_KIOSK_SEB :
 							$switchToSebGUI = $is_seb;

@@ -7,7 +7,7 @@ config#:#Configuration
 req_header#:#Request Header
 req_header_info#:#The key name of the request header field. PHP prefixes the header fields automatically with "HTTP_" alters "-" to "_" and set the whole string to uppercase. <br />The original request field name in the seb config is "X-SafeExamBrowser-RequestHash".
 seb_key#:#SEB Key
-seb_key_info#:#The key for SEB detection as a value of the request header above. WARNING! After setting up a seb key and safe the configs, the default behavior is blocking the access from ALL users expect admins, if they don't use a secure browser!
+seb_key_info#:#The comma seperated keys for SEB detection as a value of the request header above. WARNING! After setting up one or more seb keys and safe the configs, the default behavior is blocking the access from ALL users expect admins, if they don't use a secure browser!
 url_salt#:#URL Salt (experimental)
 url_salt_info#:#If "URL Salt" is checked then the seb key is joined with the request url and sended as sha1-256 hash. Please ask your systemadmin for details.
 role_deny#:#Role Deny

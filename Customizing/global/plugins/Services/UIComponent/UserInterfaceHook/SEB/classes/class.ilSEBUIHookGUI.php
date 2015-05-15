@@ -169,6 +169,11 @@ class ilSEBUIHookGUI extends ilUIHookPluginGUI {
 			}
 			//print_r($req);
 			$usr_id = $ilUser->getId();
+			// don't modify anything in public ilias 
+			if ($usr_id == ANONYMOUS_USER_ID) {
+				$this->setUserGUI();
+				return;
+			}
 			$is_admin = $rbacreview->isAssigned($usr_id,2);
 			$is_logged_in = ($usr_id && $usr_id != ANONYMOUS_USER_ID);
 			$deny_user = false;

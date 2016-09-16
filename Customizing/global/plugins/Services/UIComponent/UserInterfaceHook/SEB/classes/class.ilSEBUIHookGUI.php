@@ -143,7 +143,7 @@ class ilSEBUIHookGUI extends ilUIHookPluginGUI {
 	 * @return array array with entries "mode" => modification mode, "html" => your html
 	 */
 	function getHTML($a_comp, $a_part, $a_par = array()) {				
-		global $ilUser, $rbacreview, $tpl;
+		global $ilUser, $rbacreview, $tpl, $ilLog;
 		
 		if (!self::$_modifyGUI ) {
 			return array("mode" => ilUIHookPluginGUI::KEEP, "html" => "");
@@ -177,6 +177,10 @@ class ilSEBUIHookGUI extends ilUIHookPluginGUI {
 		}
 		
 		if ($a_comp == "Services/PersonalDesktop" && $a_part == "right_column") {
+			return array("mode" => ilUIHookPluginGUI::REPLACE, "html" => "");
+		}
+		
+		if ($a_comp == "Services/Container" && $a_part == "right_column") {
 			return array("mode" => ilUIHookPluginGUI::REPLACE, "html" => "");
 		}
 		

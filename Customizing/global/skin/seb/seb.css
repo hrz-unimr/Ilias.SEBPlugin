@@ -78,6 +78,14 @@ form[name="formInfoScreen"] * {
 	display: none;
 }
 
+.ilInfoScreenSec.form-horizontal .form-group {
+	background-color: white;
+}
+
+.ilToolbar.navbar {
+	background-color: white;
+}
+
 .ilMainHeader.ilTopFixed {
 	top: 0px;
 }
@@ -101,6 +109,7 @@ div#kioskOptions, div.ilMainHeader, div.ilMainheader.ilTopFixed {
 	font-weight: bold;
 	font-size: 1.2em;
 	background-color: #FFF;
+	z-index: 1000;
 }
 
 header.container, header.container-fluid {

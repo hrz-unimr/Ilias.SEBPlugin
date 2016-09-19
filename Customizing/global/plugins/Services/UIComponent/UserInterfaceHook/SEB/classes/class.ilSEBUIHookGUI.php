@@ -41,7 +41,7 @@ class ilSEBUIHookGUI extends ilUIHookPluginGUI {
 			$rec = json_decode($rec['config_json'],true); // as assoc
 		//}
 		
-		$seb_keys = split(",",$rec["seb_key"]);
+		$seb_keys = explode(",",$rec["seb_key"]);
 		$rec["seb_keys"] = array();
 		$url = $this->getFullUrl();
 		if ($rec["url_salt"]) {

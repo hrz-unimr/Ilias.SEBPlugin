@@ -5,7 +5,6 @@
 include_once("./Services/UIComponent/classes/class.ilUIHookPluginGUI.php");
 include_once("./Services/Init/classes/class.ilStartUpGUI.php");
 include_once("class.ilSEBPlugin.php");
-//include_once("./Services/JSON/classes/class.ilJsonUtil.php");
 
 /**
  * User interface hook class
@@ -115,18 +114,18 @@ class ilSEBUIHookGUI extends ilUIHookPluginGUI {
 		exit;			
 	}
 	
-	function setUserGUI () {
+	function setUserGUI ($styleDefinition) {
 		global $styleDefinition, $ilUser;
 		self::$_modifyGUI = 0;
-		$styleDefinition->setCurrentSkin($ilUser->getPref("skin"));
-		$styleDefinition->setCurrentStyle($ilUser->getPref("style"));
+		$styleDefinition::setCurrentSkin($ilUser->getPref("skin"));
+		$styleDefinition::setCurrentStyle($ilUser->getPref("style"));
 	}
 	
-	function setSebGUI () {
-		global $styleDefinition;
+	function setSebGUI ($styleDefinition) {
+		global $ilLog, $ilUser;
 		self::$_modifyGUI = 1;
-		$styleDefinition->setCurrentSkin("seb");
-		$styleDefinition->setCurrentStyle("seb");
+		$styleDefinition::setCurrentSkin("seb");
+		$styleDefinition::setCurrentStyle("seb");
 	}
 
 	/**
@@ -199,9 +198,10 @@ class ilSEBUIHookGUI extends ilUIHookPluginGUI {
 	 * @param string $a_par array of parameters (depend on $a_comp and $a_part)
 	 */
 	function modifyGUI($a_comp, $a_part, $a_par = array()) {
-		global $ilUser, $rbacreview, $ilAuth;
+		global $ilUser, $rbacreview, $ilAuth, $ilLog;
 		if ($a_comp == "Services/Init" && $a_part == "init_style") {			
 			$req = $this->detectSeb();
+			$styleDefinition = $a_par["styleDefinition"];
 			
 			// don't modify anything after an initial installation with an empty key
 			if ($req['seb_key'] == '') {
@@ -256,14 +256,14 @@ class ilSEBUIHookGUI extends ilUIHookPluginGUI {
 							break;
 					}
 					if ($switchToSebGUI) {
-						$this->setSebGUI();
+						$this->setSebGUI($styleDefinition);
 					}
 					else {
-						$this->setUserGUI();
+						$this->setUserGUI($styleDefinition);
 					}							
 				}
 				else {
-					$this->setUserGUI();
+					$this->setUserGUI($styleDefinition);
 				}
 			}
 			else { 			
@@ -278,10 +278,10 @@ class ilSEBUIHookGUI extends ilUIHookPluginGUI {
 							$switchToSebGUI = $is_seb;
 					}
 					if ($switchToSebGUI) {
-						$this->setSebGUI();
+						$this->setSebGUI($styleDefinition);
 					}
 					else {
-						$this->setUserGUI();
+						$this->setUserGUI($styleDefinition);
 					}
 				}
 			}

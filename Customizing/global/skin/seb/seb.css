@@ -90,6 +90,10 @@ form[name="formInfoScreen"] * {
 	top: 0px;
 }
 
+.navbar-collapse {
+	padding-left: 2px;
+}
+
 div.ilStartupSection p,  div.ilStartupSection p a {
 	font-size: 120% !important;
 }
@@ -211,10 +215,22 @@ td.submit {
 
 /* test */
 form[name="listofquestions"], #tst_output {
-	position: static;
-	margin-top: 70px;
+	position: absolute;
+	top: 60px;
+	width: 100%;
 }
 
+body.kiosk div.alert.alert-danger {
+	position: absolute;
+	top: 32px;
+	border: 1px solid transparent;
+	border-radius: 0px;
+	left: 2px;
+	padding-top: 2px;
+	padding-left: 4px;
+	padding-bottom: 1px;
+	width: 100%;
+}
 
 div.ilTstQuestionSummaryBlock_WorkingTime, div.ilTstWorkingFormBlock_WorkingTime {
 	width: 100%;

@@ -81,11 +81,16 @@ class ilSEBUIHookGUI extends ilUIHookPluginGUI {
 	function getSebObject() { // obsolet?
 		global $ilUser;
 		$pl = $this->getPluginObject();
+		$login = ($ilUser->getLogin()) ? $ilUser->getLogin() : "";
+		$firstname = ($ilUser->getFirstname()) ? $ilUser->getFirstname() : "";
+		$lastname = ($ilUser->getLastname()) ? $ilUser->getLastname() : "";
+		$matriculation = ($ilUser->getMatriculation()) ? $ilUser->getMatriculation() : "";
+		
 		$seb_user = array(
-					"login" => $ilUser->getLogin(),
-					"firstname" => $ilUser->getFirstname(),
-					"lastname" => $ilUser->getLastname(),
-					"matriculation" => $ilUser->getMatriculation()
+					"login" => $login,
+					"firstname" => $firstname,
+					"lastname" => $lastname,
+					"matriculation" => $matriculation
 				);
 		$seb_object = array("user" => $seb_user);
 		$ret = json_encode($seb_object); 

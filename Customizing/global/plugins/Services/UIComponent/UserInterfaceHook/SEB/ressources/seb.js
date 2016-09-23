@@ -9,11 +9,15 @@ function seb_init() {
 
 function addUser() {
 	logout = "<a href='./logout.php'>logout</a>";
-	$("header div.row").append("<div class=\"sebObject\"><span class=\"sebFullname\">"+seb_object.user.firstname + " " + seb_object.user.lastname + "</span><span class=\"sebLogin\"> (" + seb_object.user.login + (seb_object.user.matriculation ? ", " + seb_object.user.matriculation : "") + ")</span>  >>  " + logout + "</div>");
+	$("header div.row").append("<div class=\"sebObject\"><span class=\"sebFullname\">"+seb_object.user.firstname + " " + seb_object.user.lastname + "</span><span class=\"sebLogin\"> " + getExtraData() + "</span>  >>  " + logout + "</div>");
 }
 
 function appendUserData() {
-	$("#kioskParticipant").append(" (" + seb_object.user.login + ", " + seb_object.user.matriculation + ")");
+	$("#kioskParticipant").append(getExtraData());
+}
+
+function getExtraData() {
+	return (seb_object.user.matriculation != "") ? " (" + seb_object.user.login + ", " + seb_object.user.matriculation + ")" : " (" + seb_object.user.login + ")";
 }
 
 window.addEventListener("load", seb_init, false);

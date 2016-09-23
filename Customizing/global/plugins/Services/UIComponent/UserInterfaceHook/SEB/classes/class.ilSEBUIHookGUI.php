@@ -205,14 +205,14 @@ class ilSEBUIHookGUI extends ilUIHookPluginGUI {
 			
 			// don't modify anything after an initial installation with an empty key
 			if ($req['seb_key'] == '') {
-				$this->setUserGUI();
+				$this->setUserGUI($styleDefinition);
 				return;
 			}
 			
 			$usr_id = $ilUser->getId();
 			// don't modify anything in public ilias 
 			if ($usr_id == ANONYMOUS_USER_ID) {
-				$this->setUserGUI();
+				$this->setUserGUI($styleDefinition);
 				return;
 			}
 			

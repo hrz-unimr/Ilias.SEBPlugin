@@ -96,7 +96,9 @@ class ilSEBUIHookGUI extends ilUIHookPluginGUI {
 		global $ilAuth;	
 		$pl = $this->getPluginObject();	
 		ilSession::setClosingContext(ilSession::SESSION_CLOSE_LOGIN);
-		$ilAuth->logout();
+		if (is_object($ilAuth)) {
+			$ilAuth->logout();
+		}
 		session_unset();
 		session_destroy();
 		$script = "login.php?target=".$_GET["target"]."&client_id=".$_COOKIE["ilClientId"];	

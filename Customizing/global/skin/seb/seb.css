@@ -220,7 +220,7 @@ form[name="listofquestions"], #tst_output {
 	width: 100%;
 }
 
-body.kiosk div.alert.alert-danger {
+#ilAll > div.alert {
 	position: absolute;
 	top: 32px;
 	border: 1px solid transparent;

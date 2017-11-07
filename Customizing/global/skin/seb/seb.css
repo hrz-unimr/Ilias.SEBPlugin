@@ -83,7 +83,8 @@ form[name="formInfoScreen"] * {
 }
 
 .ilToolbar.navbar {
-	background-color: #F0F0F0;;
+	background-color: #F0F0F0;
+	margin-bottom: 0px;
 }
 
 .ilMainHeader.ilTopFixed {
@@ -235,7 +236,7 @@ td.submit {
 /* test */
 form[name="listofquestions"], #tst_output {
 	position: absolute;
-	top: 60px;
+	top: 45px;
 	width: 100%;
 }
 
@@ -252,7 +253,7 @@ form[name="listofquestions"], #tst_output {
 }
 
 #tst_left {
-    position: absolute;
+    position: relative;
     left: 0px;
     top: 0px;
     float: left;
@@ -268,8 +269,8 @@ form[name="listofquestions"], #tst_output {
 }
 
 #tst_right {
-    box-shadow: -1px 1px 3px 0 #c6c6c6;
-    border-bottom: 1px solid #f0f0f0;
+	box-shadow: -1px 1px 3px 0 #c6c6c6;
+	border-bottom: 1px solid #f0f0f0;
 }
 
 div.ilTstQuestionSummaryBlock_WorkingTime, div.ilTstWorkingFormBlock_WorkingTime {

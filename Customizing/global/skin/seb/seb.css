@@ -1,11 +1,11 @@
 @import url("../../../../templates/default/delos.css") screen;
 
 body {
-	background-color: #FFF;
+	background-color: #F0F0F0;
 }
 
 body.std {
-	background-color: #FFF;
+	background-color: #F0F0F0;
 }
 
 
@@ -71,7 +71,7 @@ div.ilBlockHeader {
 }
 
 form[name="formInfoScreen"] * {
-	background-color: #FFF;
+	background-color: #F0F0F0;
 }
 
 .ilInfoScreenSec .il_InfoScreenPropertyValue a[href="#"] {
@@ -79,11 +79,12 @@ form[name="formInfoScreen"] * {
 }
 
 .ilInfoScreenSec.form-horizontal .form-group {
-	background-color: white;
+	background-color: #F0F0F0;;
 }
 
 .ilToolbar.navbar {
-	background-color: white;
+	background-color: #F0F0F0;
+	margin-bottom: 0px;
 }
 
 .ilMainHeader.ilTopFixed {
@@ -98,6 +99,15 @@ div.ilStartupSection p,  div.ilStartupSection p a {
 	font-size: 120% !important;
 }
 
+div.ilStartupSection > form {
+	box-shadow: 0 3px 3px 0 #c6c6c6;
+	padding: 5px;
+}
+
+div.ilStartupSection > form .ilFormHeader {
+	background-color: white;
+}
+
 /* using a fixed MainHeader and in kioskmode a kioskOption header */
 div#kioskOptions, div.ilMainHeader, div.ilMainheader.ilTopFixed {
 	position: fixed;
@@ -109,11 +119,13 @@ div#kioskOptions, div.ilMainHeader, div.ilMainheader.ilTopFixed {
 	padding-right: 30px;
 	padding-top: 0px;
 	border-top: 0px;
-	border-bottom: 1px solid #000;
+	/*border-bottom: 1px solid #000;*/
+	border-bottom: 0 solid #fff;
 	font-weight: bold;
 	font-size: 1.2em;
 	background-color: #FFF;
 	z-index: 1000;
+	box-shadow: 0 3px 3px 0 #c6c6c6;
 }
 
 header.container, header.container-fluid {
@@ -126,9 +138,17 @@ header.container, header.container-fluid, header.container-fluid div.row, header
 	margin:0px;
 }
 
+div.ilContainerBlock div.ilObjListRow, div.il_Block {
+    box-shadow: 2px 2px 5px 0 #c6c6c6;
+}
+.ilObjListRow {
+    border-bottom: 1px solid #f0f0f0;
+    background-color: #fff;
+}
+
 #ilAll {
 	min-height: 0px !important;
-	background-color: #FFF;
+	background-color: #F0F0F0;
 }
 
 div#il_startup_logo.row {
@@ -166,15 +186,15 @@ div#mainspacekeeper.container {
 
 /* kiosk */
 .kiosk {
-	background-color: #FFF;
+	background-color: #F0F0F0;
 }
 
 .kioskWithCharSelector {
-	background-color: #FFF;
+	background-color: #F0F0F0;
 }
 
 td.submit {
-	background-color: #FFF;
+	background-color: #F0F0F0;
 	padding-top: 15px;
 	padding-bottom: 15px;
 }
@@ -216,7 +236,7 @@ td.submit {
 /* test */
 form[name="listofquestions"], #tst_output {
 	position: absolute;
-	top: 60px;
+	top: 45px;
 	width: 100%;
 }
 
@@ -232,6 +252,27 @@ form[name="listofquestions"], #tst_output {
 	width: 100%;
 }
 
+#tst_left {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    float: left;
+    width: 19%;
+    background-color: white;
+    box-shadow: 1px 1px 3px 0 #c6c6c6;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+#tst_left > div > .panel-body {
+    background-color: white;
+    font-size: 130%;
+}
+
+#tst_right {
+	box-shadow: -1px 1px 3px 0 #c6c6c6;
+	border-bottom: 1px solid #f0f0f0;
+}
+
 div.ilTstQuestionSummaryBlock_WorkingTime, div.ilTstWorkingFormBlock_WorkingTime {
 	width: 100%;
 	position: fixed;
@@ -239,7 +280,7 @@ div.ilTstQuestionSummaryBlock_WorkingTime, div.ilTstWorkingFormBlock_WorkingTime
 	padding-left: 30px;
 	top: 52px;
 	left: 0px;
-	background-color: #FFF;
+	background-color: #F0F0F0;
 	text-align: left;
 	border-bottom: 1px solid;
 }
@@ -267,16 +308,17 @@ input.ilTstMarkQuestionButton {
 	margin-left: 10px;
 }
 
+/*
 div.ilc_question_Standard {
     margin: 20px 0px;
     padding: 10px 100px 60px 40px;
-    background-color: #FFF !important;
+    background-color: #F0F0F0 !important;
     border-width: 0px !important;
     border-color: #BCD;
     border-style: solid;
     background-image: url('') !important;
 }
-
+*/
 /* Forbidden Message */
 div.sebForbiddenContent {
 	margin-top : 10%;

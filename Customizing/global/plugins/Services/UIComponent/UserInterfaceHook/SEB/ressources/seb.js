@@ -9,7 +9,7 @@ function seb_init() {
 
 function addUser() {
 	logout = "<a href='./logout.php'>logout</a>";
-	$("header div.row").append("<div class=\"sebObject\"><span class=\"sebFullname\">"+seb_object.user.firstname + " " + seb_object.user.lastname + "</span><span class=\"sebLogin\"> " + getExtraData() + "</span>  >>  " + logout + "</div>");
+	$("header div.row").append("<div class=\"sebObject\"><span class=\"sebFullname\">"+seb_object.user.firstname + " " + seb_object.user.lastname + "</span><span class=\"sebLogin\"> " + getExtraData() + "</span><span class=\"sebLogout\">" + logout + "</span></div>");
 }
 
 function appendUserData() {

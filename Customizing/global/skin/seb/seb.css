@@ -123,9 +123,10 @@ div#kioskOptions, div.ilMainHeader, div.ilMainheader.ilTopFixed {
 	border-bottom: 0 solid #fff;
 	font-weight: bold;
 	font-size: 1.2em;
-	background-color: #FFF;
+	background-color: #661616;
+	color: white;
 	z-index: 1000;
-	box-shadow: 0 3px 3px 0 #c6c6c6;
+	/*box-shadow: 0 2px 2px 0 #661616;*/
 }
 
 header.container, header.container-fluid {
@@ -178,10 +179,15 @@ div#mainspacekeeper.container {
 }
 
 /* sebObject */
-.sebObject {
-	float: right;
+div.sebObject {
+	position: absolute;
+	right: 20px;
 	padding-top: 15px;
 	padding-right: 15px;
+}
+
+span.sebLogout {
+	padding-left: 30px;
 }
 
 /* kiosk */

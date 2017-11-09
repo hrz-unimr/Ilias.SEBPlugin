@@ -95,8 +95,9 @@ form[name="formInfoScreen"] * {
 	padding-left: 2px;
 }
 
+
 div.ilStartupSection p,  div.ilStartupSection p a {
-	font-size: 120% !important;
+	font-size: 110% !important;
 }
 
 div.ilStartupSection > form {
@@ -127,6 +128,7 @@ div#kioskOptions, div.ilMainHeader, div.ilMainheader.ilTopFixed {
 	color: white;
 	z-index: 1000;
 	/*box-shadow: 0 2px 2px 0 #661616;*/
+	box-shadow: 0 8px 6px -6px black;
 }
 
 header.container, header.container-fluid {
@@ -188,6 +190,16 @@ div.sebObject {
 
 span.sebLogout {
 	padding-left: 30px;
+	color: white;
+}
+
+span.sebLogout > a {
+	color: #ffbcbc;
+	text-decoration: none;
+}
+
+span.sebLogout > a:hover {
+	text-decoration: underline;
 }
 
 /* kiosk */
@@ -271,7 +283,7 @@ form[name="listofquestions"], #tst_output {
 
 #tst_left > div > .panel-body {
     background-color: white;
-    font-size: 130%;
+    font-size: 120%;
 }
 
 #tst_right {
@@ -302,6 +314,10 @@ span.ilTstWorkingFormInfo_ProcessTimeLeft {
 
 body.kioskWithCharSelector #ilCharSelectorPanel, body.kiosk #ilCharSelectorPanel {
 	top: 85px;
+}
+
+div.questionPrintview {
+	background-color: white;
 }
 
 /*

@@ -161,6 +161,18 @@ div#il_startup_logo.row {
 	margin-left:0;
 }
 
+/* div.ilMainHeader header div.row::after */
+
+/*
+div#il_startup_logo.row::after {
+	content: 'E-Klausur System';
+	display: inline;
+	position:absolute;
+	left: 100px;
+	padding-top: 15px;
+}
+*/
+
 div#il_startup_logo img,  a.navbar-brand img {
 	width:0;
 	height:0;
@@ -181,6 +193,14 @@ div#mainspacekeeper.container {
 }
 
 /* sebObject */
+div.sysTitle {
+	position:absolute;
+	left: 100px;
+	top: 15px;
+	color: white;
+	z-index: 1000;
+}
+
 div.sebObject {
 	position: absolute;
 	right: 20px;

@@ -16,6 +16,7 @@ include_once("class.ilSEBPlugin.php");
 class ilSEBUIHookGUI extends ilUIHookPluginGUI {
 	
 	private static $_modifyGUI = 0;
+	private static $_header_top_title = "";
 	
 	function getFullUrl() {
 		$s = empty($_SERVER["HTTPS"]) ? '' : ($_SERVER["HTTPS"] == "on") ? "s" : "";
@@ -78,14 +79,13 @@ class ilSEBUIHookGUI extends ilUIHookPluginGUI {
 		}
 	}
 	
-	function getSebObject() { // obsolet?
+	function getSebObject() { // ToDo: replace by template handling
 		global $ilUser;
 		$pl = $this->getPluginObject();
 		$login = ($ilUser->getLogin()) ? $ilUser->getLogin() : "";
 		$firstname = ($ilUser->getFirstname()) ? $ilUser->getFirstname() : "";
 		$lastname = ($ilUser->getLastname()) ? $ilUser->getLastname() : "";
 		$matriculation = ($ilUser->getMatriculation()) ? $ilUser->getMatriculation() : "";
-		
 		$seb_user = array(
 					"login" => $login,
 					"firstname" => $firstname,
@@ -93,7 +93,7 @@ class ilSEBUIHookGUI extends ilUIHookPluginGUI {
 					"matriculation" => $matriculation
 				);
 		$seb_object = array("user" => $seb_user);
-		$ret = json_encode($seb_object); 
+		$ret = json_encode($seb_object);
 		return $ret;
 	}
 	 
@@ -131,6 +131,13 @@ class ilSEBUIHookGUI extends ilUIHookPluginGUI {
 	function setSebGUI ($styleDefinition) {
 		global $ilLog, $ilUser;
 		self::$_modifyGUI = 1;
+		if (self::$_header_top_title == "") {
+			include_once("./Modules/SystemFolder/classes/class.ilObjSystemFolder.php");
+			self::$_header_top_title = ilObjSystemFolder::_getHeaderTitle();
+		}
+		else {
+			$ilLog->write("Cached title");
+		}
 		$styleDefinition::setCurrentSkin("seb");
 		$styleDefinition::setCurrentStyle("seb");
 	}
@@ -155,10 +162,21 @@ class ilSEBUIHookGUI extends ilUIHookPluginGUI {
 			return array("mode" => ilUIHookPluginGUI::KEEP, "html" => "");
 		}
 		
-		// JavaScript Injection of seb_object on TA kioskmode
+		//$ilLog->write($a_comp .":".$a_part.":".$a_par["tpl_id"]);
 		
+		// Inject System Title
+		if ($a_part == "template_add" && $a_par["tpl_id"] == "Services/Init/tpl.startup_screen.html") {
+			$ilLog->write("login or logout");
+			return array("mode" => ilUIHookPluginGUI::APPEND, "html" => "<div class=\"sysTitle\">".self::$_header_top_title."</div>");
+		} 
+		
+		if ($a_part == "template_load" && $a_par["tpl_id"] == "Services/MainMenu/tpl.main_menu.html") {
+			$ilLog->write("normal main menu");
+			return array("mode" => ilUIHookPluginGUI::APPEND, "html" => "<div class=\"sysTitle\">".self::$_header_top_title."</div>");
+		}
+		
+		// JavaScript Injection of seb_object on TA kioskmode
 		if ($a_part == "template_load" && $a_par["tpl_id"] == "Modules/Test/tpl.il_as_tst_kiosk_head.html") {
-		//if ($a_comp == "Services/MainMenu" && $a_part == "main_menu_list_entries") {			
 			$pl = $this->getPluginObject();
 			$tpl->addJavaScript($pl->getDirectory() . "/ressources/seb.js");
 			$seb_object = $this->getSebObject(); 
@@ -166,8 +184,7 @@ class ilSEBUIHookGUI extends ilUIHookPluginGUI {
 		}
 		
 		// JavaScript Injection of seb_object on PD kioskmode
-		
-		if ($a_comp == "Services/MainMenu" && $a_part == "main_menu_list_entries") {			
+		if ($a_comp == "Services/MainMenu" && $a_part == "main_menu_list_entries") {				
 			$pl = $this->getPluginObject();
 			$tpl->addJavaScript($pl->getDirectory() . "/ressources/seb.js");
 			$seb_object = $this->getSebObject(); 

@@ -86,6 +86,7 @@ form[name="formInfoScreen"] * {
 	background-color: #F0F0F0;
 	margin-bottom: 0px;
         margin-top: 20px;
+	 z-index: -1;
 }
 
 .ilMainHeader.ilTopFixed {

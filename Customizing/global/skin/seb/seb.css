@@ -304,7 +304,7 @@ form[name="listofquestions"], #tst_output {
 
 #tst_left > div > .panel-body {
     background-color: white;
-    font-size: 120%;
+    font-size: 100%;
 }
 
 #tst_right {

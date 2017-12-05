@@ -110,6 +110,11 @@ div.ilStartupSection > form .ilFormHeader {
 	background-color: white;
 }
 
+div.ilTableHeaderTitle {
+        margin-top: 20px;
+}
+
+
 /* using a fixed MainHeader and in kioskmode a kioskOption header */
 div#kioskOptions, div.ilMainHeader, div.ilMainheader.ilTopFixed {
 	position: fixed;
@@ -394,3 +399,5 @@ div.sebForbiddenLogin {
 	font-size: 100%;
 	margin-top: 20pt;
 }
+
+

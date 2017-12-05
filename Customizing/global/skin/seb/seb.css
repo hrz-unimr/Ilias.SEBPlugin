@@ -302,6 +302,10 @@ form[name="listofquestions"], #tst_output {
     border-bottom: 1px solid #f0f0f0;
 }
 
+#tst_left > div > .panel-heading {
+    margin-top: 16px;   
+}
+
 #tst_left > div > .panel-body {
     background-color: white;
     font-size: 100%;

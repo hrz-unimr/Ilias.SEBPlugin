@@ -85,6 +85,8 @@ form[name="formInfoScreen"] * {
 .ilToolbar.navbar {
 	background-color: #F0F0F0;
 	margin-bottom: 0px;
+        margin-top: 20px;
+	 z-index: -1;
 }
 
 .ilMainHeader.ilTopFixed {
@@ -109,6 +111,11 @@ div.ilStartupSection > form .ilFormHeader {
 	background-color: white;
 }
 
+div.ilTableHeaderTitle {
+        margin-top: 20px;
+}
+
+
 /* using a fixed MainHeader and in kioskmode a kioskOption header */
 div#kioskOptions, div.ilMainHeader, div.ilMainheader.ilTopFixed {
 	position: fixed;
@@ -124,11 +131,11 @@ div#kioskOptions, div.ilMainHeader, div.ilMainheader.ilTopFixed {
 	border-bottom: 0 solid #fff;
 	font-weight: bold;
 	font-size: 1.2em;
-	background-color: #661616;
+	background-color: #444444;
 	color: white;
 	z-index: 1000;
 	/*box-shadow: 0 2px 2px 0 #661616;*/
-	box-shadow: 0 8px 6px -6px black;
+	/*box-shadow: 0 8px 6px -6px black;*/
 }
 
 header.container, header.container-fluid {
@@ -301,9 +308,13 @@ form[name="listofquestions"], #tst_output {
     border-bottom: 1px solid #f0f0f0;
 }
 
+#tst_left > div > .panel-heading {
+    margin-top: 16px;   
+}
+
 #tst_left > div > .panel-body {
     background-color: white;
-    font-size: 120%;
+    font-size: 100%;
 }
 
 #tst_right {
@@ -389,3 +400,5 @@ div.sebForbiddenLogin {
 	font-size: 100%;
 	margin-top: 20pt;
 }
+
+

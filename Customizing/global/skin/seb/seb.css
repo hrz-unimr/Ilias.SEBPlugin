@@ -331,6 +331,7 @@ div.ilTstQuestionSummaryBlock_WorkingTime, div.ilTstWorkingFormBlock_WorkingTime
 	background-color: #F0F0F0;
 	text-align: left;
 	border-bottom: 1px solid;
+	z-index: 1000;
 }
 
 span.ilTstWorkingFormInfo_ProcessTimeLeft {

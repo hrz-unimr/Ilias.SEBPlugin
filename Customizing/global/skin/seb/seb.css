@@ -189,6 +189,7 @@ div#il_startup_logo img,  a.navbar-brand img {
 	background-image: url(images/HeaderIcon.png);
 	background-repeat: no-repeat;
 	margin: 0px;
+	display: none;
 }
 
 /* Login Section */

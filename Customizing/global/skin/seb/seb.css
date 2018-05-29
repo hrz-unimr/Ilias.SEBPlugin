@@ -28,6 +28,18 @@ p.ilStartupSection {
 form[name="languageselection"] {
 	display:none;
 }
+/* align Intro */
+div.il_InfoScreenPropertyValue{
+margin-left: 0 !important;
+}
+
+/*align  start button */
+div.container-fluid
+{
+ margin-bottom: 20px;
+}
+
+
 
 /* hide Footer */
 footer {

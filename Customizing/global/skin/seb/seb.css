@@ -28,6 +28,18 @@ p.ilStartupSection {
 form[name="languageselection"] {
 	display:none;
 }
+/* align Intro */
+div.il_InfoScreenPropertyValue{
+margin-left: 0 !important;
+}
+
+/*align  start button */
+div.container-fluid
+{
+ margin-bottom: 20px;
+}
+
+
 
 /* hide Footer */
 footer {
@@ -85,6 +97,7 @@ form[name="formInfoScreen"] * {
 .ilToolbar.navbar {
 	background-color: #F0F0F0;
 	margin-bottom: 0px;
+        margin-top: 20px;
 }
 
 .ilMainHeader.ilTopFixed {
@@ -109,6 +122,11 @@ div.ilStartupSection > form .ilFormHeader {
 	background-color: white;
 }
 
+div.ilTableHeaderTitle {
+        margin-top: 20px;
+}
+
+
 /* using a fixed MainHeader and in kioskmode a kioskOption header */
 div#kioskOptions, div.ilMainHeader, div.ilMainheader.ilTopFixed {
 	position: fixed;
@@ -124,11 +142,11 @@ div#kioskOptions, div.ilMainHeader, div.ilMainheader.ilTopFixed {
 	border-bottom: 0 solid #fff;
 	font-weight: bold;
 	font-size: 1.2em;
-	background-color: #661616;
+	background-color: #444444;
 	color: white;
 	z-index: 1000;
 	/*box-shadow: 0 2px 2px 0 #661616;*/
-	box-shadow: 0 8px 6px -6px black;
+	/*box-shadow: 0 8px 6px -6px black;*/
 }
 
 header.container, header.container-fluid {
@@ -180,9 +198,10 @@ div#il_startup_logo img,  a.navbar-brand img {
 	padding-right: 52px;
 	padding-top: 0px;
 	padding-bottom: 50px;
-	background-image: url(images/HeaderIcon.png);
+/*	background-image: url(images/HeaderIcon.png);*/
 	background-repeat: no-repeat;
 	margin: 0px;
+	display: none;
 }
 
 /* Login Section */
@@ -301,9 +320,13 @@ form[name="listofquestions"], #tst_output {
     border-bottom: 1px solid #f0f0f0;
 }
 
+#tst_left > div > .panel-heading {
+    margin-top: 16px;   
+}
+
 #tst_left > div > .panel-body {
     background-color: white;
-    font-size: 120%;
+    font-size: 100%;
 }
 
 #tst_right {
@@ -321,6 +344,7 @@ div.ilTstQuestionSummaryBlock_WorkingTime, div.ilTstWorkingFormBlock_WorkingTime
 	background-color: #F0F0F0;
 	text-align: left;
 	border-bottom: 1px solid;
+	z-index: 1000;
 }
 
 span.ilTstWorkingFormInfo_ProcessTimeLeft {
@@ -389,3 +413,5 @@ div.sebForbiddenLogin {
 	font-size: 100%;
 	margin-top: 20pt;
 }
+
+

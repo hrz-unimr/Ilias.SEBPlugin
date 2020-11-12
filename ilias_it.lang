@@ -1,0 +1,31 @@
+// 
+// Italian Language File for SEB Plugin
+//
+ 
+<!-- language file start -->
+config#:#Configurazione
+req_header#:#Richiedi Header
+req_header_info#:#Il nome della chiave del campo Heade richiesto. PHP antepone automaticamente i campi dell'intestazione con "HTTP_" alter "-" a "_" e imposta l'intera stringa in maiuscolo. <br /> Il nome del campo della richiesta originale nella configurazione seb è "X-SafeExamBrowser-RequestHash".
+seb_key#:#SEB Key
+seb_key_info#:#Le chiavi separate da virgole per il rilevamento SEB come valore dell'intestazione della richiesta sopra. AVVERTIMENTO! Dopo aver impostato una o più chiavi seb e aver protetto le configurazioni, il comportamento predefinito è bloccare l'accesso a TUTTI gli utenti tranne gli amministratori, se non utilizzano un browser sicuro!
+url_salt#:#URL Salt (sperimentale)
+url_salt_info#:#Se "URL Salt" è selezionato, la chiave seb viene unita all'URL della richiesta e inviata come hash sha1-256. Si prega di chiedere al proprio amministratore di sistema per i dettagli.
+role_deny#:#Ruolo Negato
+role_deny_info#:#Se impostato su "tutti tranne Admin", tutti gli altri ruoli vengono bloccati e passati solo con un SEB rilevato.
+browser_access#:#Accesso tramite browser
+browser_access_info#:#Se impostato su "SEB" e "Ruolo Negato" è impostato su "tutti tranne Admin" solo le richieste da un SEB rilevato vengono passate a ILIAS. <br /> Se impostato su "Nessuno" l'accesso viene negato per <strong> TUTTI </ browser strong> e <strong> TUTTI </strong> gli utenti si aspettavano il ruolo di amministratore, quindi fai attenzione!
+role_kiosk#:#Ruolo per Kiosk Skin
+role_kiosk_info#:#Ruoli per attivare kiosk skin
+browser_kiosk#:#Browser per Kiosk Skin
+browser_kiosk_info#:#Il browser per attivare Kiosk Skin. Se nessun ruolo per la modalità kiosk è impostato sopra, l'impostazione viene ignorata.
+role_all_except_admin#:#Tutti tranne Admin
+role_none#:#Nessuno
+browser_seb#:#SEB
+browser_none#:#Nessuno
+browser_all#:#Tutti
+save_success#:#Salvataggio eseguito con successo
+save_failure#:#Salvataggio fallito!
+nothing_changed#:#Nessun cambiamento
+forbidden_header#:#Accesso negato!
+forbidden_message#:#Non sei autorizzato ad accedere al sistema con questo browser. <br /> Contatta l'amministratore di sistema.
+forbidden_login#:#Login a ILIAS
